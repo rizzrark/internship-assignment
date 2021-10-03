@@ -10,21 +10,22 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Device {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
-  owner       User?  @relation(fields: [ownerId], references: [id])
-  ownerId     Int?
-}
+// model Device {
+//   id          Int     @id @default(autoincrement())
+//   name        String
+//   description String
+//   owner       User?   @relation(fields: [ownerId], references: [name])
+//   ownerId     String?
+// }
 
 model User {
   id            Int       @id @default(autoincrement())
-  name          String
+  name          String    @unique
   email         String?   @unique
   emailVerified DateTime? @map(name: "email_verified")
   image         String?
-  devices       Device[]
+  device        String?
+  description   String?
 
   @@map(name: "users")
 }

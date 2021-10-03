@@ -1,16 +1,16 @@
 import Head from "next/head";
 import { signIn, signOut, useSession, getSession } from "next-auth/client";
-import { saveDevices } from "@/lib/crud/crud";
 import { useState } from "react";
 import prisma from "@/lib/client";
 import Link from "next/link";
 
 // Components
-import AddSpenceForm from "@/components/deviceform/AddDeviceForm";
+import TableIndex from "@/components/table/TableIndex";
 
-export default function Home({ user }) {
+export default function Device({ allDevices, user }) {
   const [session, loading] = useSession();
   const [userData, setUserData] = useState(user);
+  console.log(userData);
   return (
     <>
       <Head>
@@ -75,19 +75,12 @@ export default function Home({ user }) {
                 </nav>
                 {/* main */}
                 <main className="flex items-center justify-center text-gray-700">
-                  <section className="w-1/3 ">
-                    <div className="fixed w-1/3 h-screen p-8 ">
-                      <AddSpenceForm
-                        onSubmit={async (data, e) => {
-                          try {
-                            await saveDevices(data);
-                            setUserData([...userData, data]);
-                            e.target.reset();
-                          } catch (err) {
-                            console.log(err);
-                          }
-                        }}
-                      />
+                  <section className="flex flex-col items-center p-8 mx-12 space-x-8">
+                    <div className="text-xl font-bold text-gray-700">
+                      My device
+                    </div>
+                    <div className="m-6">
+                      <TableIndex tableData={userData} />
                     </div>
                   </section>
                 </main>
