@@ -1,7 +1,6 @@
 import TableHeader from "@/components/table/TableHead";
 import TableRow from "@/components/table/TableRow";
 import TableRowData from "@/components/table/TableRowData";
-import TableRowDataPrice from "@/components/table/TableRowDataPrice";
 
 export interface TableProps {
   tableData: any[];
