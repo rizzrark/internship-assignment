@@ -21,7 +21,6 @@ const Table: React.FC<TableProps> = ({ tableData }: TableProps) => {
         {tableData.map((data) => (
           <TableRow key={data.id}>
             <TableRowData tableRowData={data.name} />
-            <TableRowDataPrice tableRowData={data.price} />
             <TableRowData tableRowData={data.buyer} />
             <TableRowData tableRowData={data.date} />
           </TableRow>
